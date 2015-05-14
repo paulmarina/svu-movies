@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel for="title" value="*Movie Title: " title="Movie Title" />
+			<h:panelGroup>
+
+				<!-- Below are validation messages inside jsf -->
+				<!-- <h:inputText id="title"
+					value="#{addMovieDialog.newMovie.title}" title="Movie Title"
+					tabindex="1" required="true"
+					requiredMessage="Movie title is required" />
+				<h:message id="m1" for="title" style="color:red" /> -->
+
+				<!-- Below are validation messages from bean -->
+				<h:inputText id="title" value="#{addMovieDialog.newMovie.title}"
+					title="Movie Title" tabindex="1" />
+				<h:message id="m1" for="title" style="color:red" />
+
+			</h:panelGroup>
+
+			<h:outputLabel for="director" value="*Movie Director: "
+				title="Movie Director" />
+			<h:panelGroup>
+				<h:inputText id="director"
+					value="#{addMovieDialog.newMovie.director}" title="Movie director"
+					tabindex="1" required="true"
+					requiredMessage="Movie director is required" />
+				<h:message id="m2" for="director" style="color:red" />
+			</h:panelGroup>
+
+			<h:outputLabel for="year" value="*Movie Year: " title="Movie Year" />
+			<h:panelGroup>
+				<h:inputText id="year" value="#{addMovieDialog.newMovie.year}"
+					title="Movie Year" tabindex="1" required="true"
+					requiredMessage="Movie year is required" />
+				<h:message id="m3" for="year" style="color:red" />
+			</h:panelGroup>
+		</h:panelGrid>
+		<h:commandButton id="addButton" value="Add"
+			actionListener="#{addMovieDialog.checkEditMode}"
+			action="#{addMovieDialog.addMovie()}" />
+	</h:form>
+</h:body>
+</html>

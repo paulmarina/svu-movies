@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<link rel="stylesheet" type="text/css"
+		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript"
+		src="../resources/scripts/jquery.waitforimages.min.js">	</script>
+	<script type="text/javascript" src="../resources/scripts/slide.js"></script>
+	<link href="../resources/css/slide.css" rel="stylesheet"
+		type="text/css" />
+
+</h:head>
+<h:body>
+
+	<center>
+		<h:outputText value="Edit Movie Information" styleClass="header"
+			rendered="#{editMovieDialog.isEditMode}">
+		</h:outputText>
+		<h:outputText value="View Movie Information" styleClass="header"
+			rendered="#{!editMovieDialog.isEditMode}">
+		</h:outputText>
+	</center>
+
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel for="title">Movie Title:</h:outputLabel>
+			<h:inputText id="title" value="#{editMovieDialog.movie.title}"
+				required="true" readonly="#{!editMovieDialog.isEditMode}" />
+
+			<h:outputLabel for="director">Movie Director:</h:outputLabel>
+			<h:inputText id="director" value="#{editMovieDialog.movie.director}"
+				required="true" readonly="#{!editMovieDialog.isEditMode}" />
+
+			<h:outputLabel for="year">Movie Year:</h:outputLabel>
+			<h:inputText id="year" value="#{editMovieDialog.movie.year}"
+				required="true" readonly="#{!editMovieDialog.isEditMode}" />
+
+			<h:outputLabel for="upload">Movie Pictures:</h:outputLabel>
+
+
+			<!-- <p:growl id="messages" showDetail="true" /> -->
+
+			<p:fileUpload
+				fileUploadListener="#{uploadImageDialog.handleFileUpload}"
+				mode="advanced" multiple="true"
+				sizeLimit="1000000"
+				rendered="#{editMovieDialog.isEditMode || addMovieDialog.isEditMode}" />
+
+			<!-- ....................................................slideShow using primefaces......................................................
+ .................................................................................................................................... -->
+
+			<!-- <p:carousel id="images" numVisible="1"
+				value="#{editMovieDialog.imagesForMovie}" var="image"
+				rendered="#{!(editMovieDialog.isEditMode || addMovieDialog.isEditMode)}"
+				effect="easeInStrong" circular="true"
+				itemStyle="border:0px;height:280px;width:400px;" style="text-align:center">
+				<h:panelGrid columns="1" style="text-align:center" cellpadding="1">
+
+					<p:graphicImage value="/rest/images/#{image.id}" />
+
+				</h:panelGrid>
+			</p:carousel> -->
+
+			<!-- ....................................................................................................................................
+ .................................................................................................................................... -->
+
+		</h:panelGrid>
+
+
+
+		<!-- ....................................................slideShow using javascript......................................................
+ .................................................................................................................................... -->
+
+		<div class="container">
+			<div id="myCarousel" class="carousel slide">
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner">
+					<ui:repeat var="image" value="#{editMovieDialog.imagesForMovie}">
+						<div
+							class="item #{ editMovieDialog.imagesForMovie.indexOf(image) == 0 ? 'active' : ''}">
+							<h:graphicImage value="/rest/images/#{image.id}"
+								rendered="#{!(editMovieDialog.isEditMode || addMovieDialog.isEditMode)}"
+								alt="nature" width="460" height="345" />
+						</div>
+					</ui:repeat>
+				</div>
+				<!-- Left and right controls -->
+				<a class="left carousel-control"> <span
+					class="glyphicon glyphicon-chevron-left"></span> <span
+					class="sr-only">Previous</span>
+				</a> <a class="right carousel-control" href="#myCarousel"> <span
+					class="glyphicon glyphicon-chevron-right"></span> <span
+					class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+
+		<!-- ....................................................................................................................................
+ .................................................................................................................................... -->
+
+
+		<h:commandButton value="Save changes"
+			action="#{editMovieDialog.updateMovie(editMovieDialog.movie)}"
+			rendered="#{editMovieDialog.isEditMode || addMovieDialog.isEditMode}" />
+	</h:form>
+
+</h:body>
+</html>

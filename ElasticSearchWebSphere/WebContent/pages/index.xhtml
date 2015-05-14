@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link href="table.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+
+	<f:view>
+
+		<h:form>
+
+			<rich:dataTable value="#{displayMoviesDialog.displayMoviesList()}"
+				var="movie" iterationStatusVar="it" styleClass="movieTable"
+				headerClass="movieTableHeader"
+				rowClasses="movieTableOddRow,movieTableEvenRow" style="width:20">
+
+				<f:facet name="header">
+					<h:outputText value="List of movies" />
+				</f:facet>
+
+				<f:facet name="noData"> Nothing found </f:facet>
+				<rich:column>
+					<f:facet name="header">#</f:facet>
+					<h:outputText value="#{it.index + 1}" />
+				</rich:column>
+
+				<rich:column breakBefore="true">
+					<f:facet name="header">Title</f:facet>
+					<h:outputText value="#{movie.title}" />
+				</rich:column>
+
+				<rich:column breakBefore="true">
+					<f:facet name="header">Director</f:facet>
+					<h:outputText value="#{movie.director}" />
+				</rich:column>
+
+				<rich:column breakBefore="true">
+					<f:facet name="header">Year</f:facet>
+					<h:outputText value="#{movie.year}" />
+				</rich:column>
+
+				<rich:column breakBefore="true">
+					<f:facet name="header">Actions</f:facet>
+					<h:commandButton value="Edit"
+						action="#{editMovieDialog.editMovie(movie)}"
+						actionListener="#{editMovieDialog.checkEditMode}" id="edit" />
+					<h:commandButton value="Delete"
+						action="#{displayMoviesDialog.deleteMovie(movie)}" />
+					<h:commandButton value="View" id="view"
+						action="#{editMovieDialog.editMovie(movie)}"
+						actionListener="#{editMovieDialog.checkEditMode}" />
+
+					<h:commandButton value="DisplayImage"
+						action="#{movieImageDialog.displayImage(movie)}" />
+
+				</rich:column>
+
+			</rich:dataTable>
+
+			
+			<h:commandButton value="Add new movie" action="addMovie.xhtml?faces-redirect=true"/>
+
+		</h:form>
+
+	</f:view>
+
+</h:body>
+</html>

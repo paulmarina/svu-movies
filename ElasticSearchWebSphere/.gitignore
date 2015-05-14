@@ -1,0 +1,8 @@
+*.class
+.settings/
+
+.classpath
+.metadata/
+/.apt_generated/
+
+/bin/

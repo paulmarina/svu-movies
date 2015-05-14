@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<link rel="stylesheet" type="text/css"
+		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript"
+		src="../resources/scripts/jquery.waitforimages.min.js">
+		</script>
+	<script type="text/javascript" src="../resources/scripts/slide.js">
+		</script>
+	<link href="../resources/css/slide.css" rel="stylesheet" type="text/css" />
+
+</h:head>
+<body>
+
+	<div class="container">
+
+		<div id="myCarousel" class="carousel slide">
+
+			<!-- Wrapper for slides -->
+
+			<div class="carousel-inner">
+
+
+
+				<div class="item active">
+					<h:graphicImage value="nature1.jpg" alt="nature" width="460"
+						height="345" />
+				</div>
+				<div class="item">
+					<h:graphicImage value="nature2.jpg" alt="nature2" width="460"
+						height="345" />
+				</div>
+				<div class="item ">
+					<h:graphicImage value="nature3.jpg" alt="nature3" width="460"
+						height="345" />
+				</div>
+				<div class="item">
+					<h:graphicImage value="nature4.jpg" alt="nature4" width="460"
+						height="345" />
+				</div>
+
+
+
+			</div>
+
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control"> <span
+				class="glyphicon glyphicon-chevron-left"></span> <span
+				class="sr-only">Previous</span>
+			</a> <a class="right carousel-control" href="#myCarousel"> <span
+				class="glyphicon glyphicon-chevron-right"></span> <span
+				class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+
+
+</body>
+</html>

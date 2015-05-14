@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="INDEX">svu</entry>
+	<entry key="TYPE">movie</entry>
+	<entry key="CLUSTER">mormon</entry>
+	<entry key="IMAGE_TYPE">imagine</entry>
+	
+</properties>
