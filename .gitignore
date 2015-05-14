@@ -1,0 +1,9 @@
+*.class
+.settings/
+
+.classpath
+.metadata/
+/.apt_generated/
+/RemoteSystemsTempFiles/
+
+/bin/
